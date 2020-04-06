@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>What Day Is It?</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Courier+Prime"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        background-color: #000000;
+        color: #ffffff;
+        font-family: 'Courier Prime', monospace;
+        font-weight: 400;
+      }
+
+      h1 {
+        font-size: 6rem;
+      }
+
+      h3 {
+        font-feature-settings: 'tnum';
+        font-size: 3.5rem;
+        font-variant-numeric: tabular-nums;
+        margin: 0;
+      }
+
+      .container {
+        text-align: center;
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>What Day Is It?</h1>
+      <h3 id="date"></h3>
+      <h3 id="time"></h3>
+    </div>
+    <script type="text/javascript">
+      function updateTime() {
+        var d = new Date();
+        var time = document.getElementById('time');
+        var date = document.getElementById('date');
+
+        time.innerHTML = d.toLocaleTimeString();
+
+        var options = {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        };
+
+        date.innerHTML = d.toLocaleDateString(undefined, options);
+
+        setTimeout(updateTime, 1000);
+      }
+      updateTime();
+    </script>
+  </body>
+</html>
